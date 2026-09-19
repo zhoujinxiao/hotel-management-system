@@ -1,4 +1,4 @@
-﻿# 云栖酒店运营系统
+# 云栖酒店运营系统
 
 单体酒店内部使用的桌面 Web 运营系统。当前仓库包含需求文档、UI 原型、前端工程和后端工程。
 
@@ -74,3 +74,15 @@ docker compose -f infra/compose.yaml up -d
 - `docs/TECH-DESIGN.md`
 - `prototype/README.md`
 - `AGENTS.md`
+
+## 首次管理员账号
+
+系统不会提交默认管理员密码。首次部署时设置：
+
+```text
+APP_ADMIN_USERNAME
+APP_ADMIN_PASSWORD
+APP_ADMIN_DISPLAY_NAME
+```
+
+应用启动时只有在用户表为空且账号密码已配置的情况下，才会创建第一个管理员。生产环境的 `SESSION_COOKIE_SECURE` 必须设置为 `true`。

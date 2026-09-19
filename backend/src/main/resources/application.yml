@@ -1,4 +1,4 @@
-﻿spring:
+spring:
   application:
     name: hotel-management-system
   datasource:
@@ -25,9 +25,23 @@
     time-zone: Asia/Shanghai
     default-property-inclusion: non_null
 
+app:
+  identity:
+    bootstrap-admin:
+      username: ${APP_ADMIN_USERNAME:}
+      password: ${APP_ADMIN_PASSWORD:}
+      display-name: ${APP_ADMIN_DISPLAY_NAME:系统管理员}
+
 server:
   port: ${SERVER_PORT:8080}
   forward-headers-strategy: framework
+  servlet:
+    session:
+      timeout: 8h
+      cookie:
+        http-only: true
+        same-site: strict
+        secure: ${SESSION_COOKIE_SECURE:false}
 
 management:
   endpoints:
