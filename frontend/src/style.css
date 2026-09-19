@@ -176,3 +176,42 @@ a { color: inherit; text-decoration: none; }
 .login-form button:disabled { opacity: .55; cursor: wait; }
 .login-form > small { display: block; margin-top: 14px; color: #89908c; font-size: 9px; text-align: center; }
 .login-error { margin: 14px 0 0; padding: 9px 10px; border: 1px solid #e2b5aa; border-radius: 8px; color: #9a4435; background: #f7e6e2; font-size: 10px; }
+
+.modal-overlay, .drawer-overlay { position: fixed; inset: 0; z-index: 100; display: grid; background: rgba(15,28,24,.45); backdrop-filter: blur(2px); }
+.modal-overlay { place-items: center; padding: 24px; }
+.drawer-overlay { justify-items: end; }
+.app-modal { width: min(620px, 100%); max-height: calc(100vh - 48px); border: 1px solid rgba(255,255,255,.25); border-radius: 16px; background: var(--surface); box-shadow: 0 28px 80px rgba(15,31,26,.3); overflow: hidden; }
+.app-modal-head, .drawer-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 20px 22px 15px; border-bottom: 1px solid var(--line); }
+.app-modal-head > div > span, .drawer-head span { color: var(--copper); font: 9px Consolas, monospace; }
+.app-modal-head h2, .drawer-head h2 { margin: 3px 0 0; font: 700 23px "STZhongsong", serif; }
+.app-modal-head button, .drawer-head button { display: grid; place-items: center; width: 34px; height: 34px; color: var(--muted); border-radius: 8px; background: transparent; }
+.app-modal-head button:hover, .drawer-head button:hover { background: #efede7; }
+.app-modal-body { max-height: calc(100vh - 220px); padding: 20px 22px; overflow-y: auto; }
+.app-modal-foot, .drawer-foot { display: flex; justify-content: flex-end; gap: 8px; padding: 13px 22px; border-top: 1px solid var(--line); background: #f4f2ec; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+.form-grid label, .status-form label { display: grid; gap: 6px; min-width: 0; }
+.form-grid label.wide { grid-column: 1 / -1; }
+.form-grid label > span, .status-form label > span { font-size: 10px; font-weight: 700; }
+.form-grid input, .form-grid select, .form-grid textarea, .status-form select { width: 100%; min-height: 40px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; outline: 0; background: #fff; font-size: 11px; }
+.form-grid textarea { min-height: 80px; padding: 9px 10px; resize: vertical; }
+.form-grid input:focus, .form-grid select:focus, .form-grid textarea:focus, .status-form select:focus { border-color: var(--pine-2); box-shadow: 0 0 0 3px rgba(39,94,78,.1); }
+.room-drawer { width: min(430px, 100%); height: 100%; display: flex; flex-direction: column; background: var(--surface); box-shadow: -22px 0 60px rgba(15,31,26,.18); }
+.drawer-head p { margin: 4px 0 0; color: var(--muted); font-size: 10px; }
+.drawer-body { flex: 1; padding: 18px 20px; overflow-y: auto; }
+.drawer-section { padding: 15px 0; border-bottom: 1px solid var(--line); }
+.drawer-section:first-child { padding-top: 0; }
+.drawer-section h3 { margin: 0 0 7px; font: 700 15px "STZhongsong", serif; }
+.drawer-section p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.7; }
+.drawer-help { margin-bottom: 12px !important; }
+.status-form { display: grid; gap: 12px; }
+.sellability-box { display: grid; gap: 4px; padding: 12px; border: 1px solid var(--line); border-radius: 9px; }
+.sellability-box strong { font-size: 11px; }
+.sellability-box span { color: var(--muted); font-size: 9px; }
+.sellability-box.is-ready { color: #285a4b; border-color: #bad0c6; background: #e6f0eb; }
+.sellability-box.is-blocked { color: #8b5d2d; border-color: #e1c48f; background: #f8eedc; }
+@media (max-width: 1280px) {
+  .room-card-grid { grid-template-columns: repeat(5, minmax(100px, 1fr)); }
+  .room-summary { grid-template-columns: repeat(3, 1fr); }
+  .room-summary article:nth-child(4) { border-left: 0; border-top: 1px solid var(--line); }
+  .room-summary article:nth-child(5) { border-top: 1px solid var(--line); }
+}
