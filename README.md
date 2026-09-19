@@ -86,3 +86,18 @@ APP_ADMIN_DISPLAY_NAME
 ```
 
 应用启动时只有在用户表为空且账号密码已配置的情况下，才会创建第一个管理员。生产环境的 `SESSION_COOKIE_SECURE` 必须设置为 `true`。
+## 初始化本机 MySQL
+
+使用 MySQL 管理员账号执行：
+
+```text
+infra/bootstrap-dev-db.sql
+```
+
+脚本会创建：
+
+- 数据库：`hotel_management`
+- 开发用户：`hotel`
+- 本地开发密码：`hotel_dev_password`
+
+正式部署必须替换开发密码，并通过环境变量注入。
