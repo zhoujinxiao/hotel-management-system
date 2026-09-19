@@ -6,6 +6,8 @@ import com.zhoujinxiao.hotel.identity.api.LoginRequest;
 import com.zhoujinxiao.hotel.identity.api.UserResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,6 +21,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AuthenticationApplicationService {
+    private static final Logger log = LoggerFactory.getLogger(AuthenticationApplicationService.class);
+
     private final AuthenticationManager authenticationManager;
     private final SecurityContextRepository securityContextRepository;
     private final AuditService auditService;
@@ -35,6 +39,7 @@ public class AuthenticationApplicationService {
         try {
             authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.username(), request.password()));
         } catch (AuthenticationException exception) {
+            log.warn("Authentication failed for user '{}': {}", request.username(), exception.getClass().getSimpleName());
             throw new BusinessException(HttpStatus.UNAUTHORIZED, "INVALID_CREDENTIALS", "用户名或密码错误");
         }
         SecurityContext context = SecurityContextHolder.createEmptyContext();

@@ -1,4 +1,4 @@
-﻿CREATE TABLE app_user (
+CREATE TABLE app_user (
     id BIGINT NOT NULL AUTO_INCREMENT,
     username VARCHAR(80) NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
@@ -12,7 +12,7 @@
     PRIMARY KEY (id),
     UNIQUE KEY uk_app_user_username (username),
     CONSTRAINT chk_app_user_failed_attempts CHECK (failed_login_attempts >= 0)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE role (
     id BIGINT NOT NULL AUTO_INCREMENT,
@@ -22,7 +22,7 @@ CREATE TABLE role (
     created_at TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
     PRIMARY KEY (id),
     UNIQUE KEY uk_role_code (code)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE permission (
     id BIGINT NOT NULL AUTO_INCREMENT,
@@ -32,7 +32,7 @@ CREATE TABLE permission (
     created_at TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
     PRIMARY KEY (id),
     UNIQUE KEY uk_permission_code (code)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE user_role (
     user_id BIGINT NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE user_role (
     PRIMARY KEY (user_id, role_id),
     CONSTRAINT fk_user_role_user FOREIGN KEY (user_id) REFERENCES app_user (id),
     CONSTRAINT fk_user_role_role FOREIGN KEY (role_id) REFERENCES role (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE role_permission (
     role_id BIGINT NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE role_permission (
     PRIMARY KEY (role_id, permission_id),
     CONSTRAINT fk_role_permission_role FOREIGN KEY (role_id) REFERENCES role (id),
     CONSTRAINT fk_role_permission_permission FOREIGN KEY (permission_id) REFERENCES permission (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE audit_log (
     id BIGINT NOT NULL AUTO_INCREMENT,
@@ -67,7 +67,7 @@ CREATE TABLE audit_log (
     KEY idx_audit_target (target_type, target_id, occurred_at),
     KEY idx_audit_action_time (action, occurred_at),
     CONSTRAINT fk_audit_actor FOREIGN KEY (actor_user_id) REFERENCES app_user (id) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO role (code, name, description) VALUES
 ('ADMIN', '管理员', '系统配置、用户、权限和全部业务数据'),

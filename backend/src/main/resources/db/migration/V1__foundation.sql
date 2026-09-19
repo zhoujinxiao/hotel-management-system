@@ -1,4 +1,4 @@
-﻿CREATE TABLE room_type (
+CREATE TABLE room_type (
     id BIGINT NOT NULL AUTO_INCREMENT,
     code VARCHAR(40) NOT NULL,
     name VARCHAR(80) NOT NULL,
@@ -14,7 +14,7 @@
     UNIQUE KEY uk_room_type_code (code),
     CONSTRAINT chk_room_type_occupancy CHECK (standard_occupancy >= 1 AND max_occupancy >= standard_occupancy),
     CONSTRAINT chk_room_type_rate CHECK (default_rate >= 0)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE room (
     id BIGINT NOT NULL AUTO_INCREMENT,
@@ -36,7 +36,7 @@ CREATE TABLE room (
     CONSTRAINT chk_room_occupancy_status CHECK (occupancy_status IN ('VACANT', 'RESERVED', 'OCCUPIED')),
     CONSTRAINT chk_room_cleanliness_status CHECK (cleanliness_status IN ('DIRTY', 'CLEAN', 'INSPECTED')),
     CONSTRAINT chk_room_usability_status CHECK (usability_status IN ('USABLE', 'OUT_OF_ORDER'))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE guest (
     id BIGINT NOT NULL AUTO_INCREMENT,
@@ -54,7 +54,7 @@ CREATE TABLE guest (
     PRIMARY KEY (id),
     KEY idx_guest_phone_last4 (phone_last4),
     UNIQUE KEY uk_guest_id_number_hash (id_number_hash)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE booking (
     id BIGINT NOT NULL AUTO_INCREMENT,
@@ -84,7 +84,7 @@ CREATE TABLE booking (
     CONSTRAINT chk_booking_source CHECK (source IN ('WALK_IN', 'PHONE', 'WECHAT')),
     CONSTRAINT chk_booking_guarantee CHECK (guarantee_status IN ('GUARANTEED', 'NOT_GUARANTEED')),
     CONSTRAINT chk_booking_amounts CHECK (rate >= 0 AND total_amount >= 0)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE booking_night (
     id BIGINT NOT NULL AUTO_INCREMENT,
@@ -97,7 +97,7 @@ CREATE TABLE booking_night (
     KEY idx_booking_night_booking (booking_id),
     CONSTRAINT fk_booking_night_booking FOREIGN KEY (booking_id) REFERENCES booking (id),
     CONSTRAINT fk_booking_night_room FOREIGN KEY (room_id) REFERENCES room (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE booking_status_history (
     id BIGINT NOT NULL AUTO_INCREMENT,
@@ -110,4 +110,4 @@ CREATE TABLE booking_status_history (
     PRIMARY KEY (id),
     KEY idx_booking_status_history_booking (booking_id, changed_at),
     CONSTRAINT fk_booking_status_history_booking FOREIGN KEY (booking_id) REFERENCES booking (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
