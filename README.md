@@ -101,3 +101,15 @@ infra/bootstrap-dev-db.sql
 - 本地开发密码：`hotel_dev_password`
 
 正式部署必须替换开发密码，并通过环境变量注入。
+## Local encryption key
+
+Guest phone and identity data require a 32-byte Base64 AES key. Generate one locally:
+
+```powershell
+$rng = [Security.Cryptography.RandomNumberGenerator]::Create()
+$bytes = New-Object byte[] 32
+$rng.GetBytes($bytes)
+[Convert]::ToBase64String($bytes)
+```
+
+Set the result as `APP_ENCRYPTION_KEY`. Do not commit the real key or change it after storing encrypted guest data.
