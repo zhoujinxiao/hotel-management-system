@@ -1,0 +1,229 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1440" />
+  <title>酒店运营系统 · 原型</title>
+  <link rel="stylesheet" href="prototype.css" />
+</head>
+<body data-variant="A">
+  <div class="prototype-ribbon">PROTOTYPE · 非生产界面</div>
+
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+    <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18v-7h18v7M3 11V7M21 18v2M3 18v2M7 11V8h5a3 3 0 0 1 3 3"/><path d="M15 11V8h3a3 3 0 0 1 3 3"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M5 3v18l3-2 2 2 2-2 2 2 2-2 3 2V3l-3 2-2-2-2 2-2-2-2 2z"/><path d="M9 9h6M9 13h6"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"/><path d="m11 12 9-9M16 7l2 2M13 10l2 2"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-broom" viewBox="0 0 24 24"><path d="m14 4 6 6M16 6 8 14M6 12l6 6M3 21l3-3M9 15l-3 3"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+  </svg>
+
+  <main class="prototype-stage">
+    <section class="variant variant-a" aria-label="方案 A 值班控制台">
+      <div class="a-shell">
+        <aside class="a-rail">
+          <div class="a-brand"><span>云</span><div><strong>云栖酒店</strong><small>湖滨店 · 运营台</small></div></div>
+          <nav class="a-nav">
+            <a class="active"><svg><use href="#i-grid"></use></svg>值班台</a>
+            <a><svg><use href="#i-calendar"></use></svg>预订管理 <b>7</b></a>
+            <a><svg><use href="#i-bed"></use></svg>房态中心</a>
+            <a><svg><use href="#i-key"></use></svg>入住 / 退房</a>
+            <a><svg><use href="#i-broom"></use></svg>客房任务 <b>6</b></a>
+            <a><svg><use href="#i-receipt"></use></svg>账单与班次</a>
+            <a><svg><use href="#i-users"></use></svg>宾客档案</a>
+          </nav>
+          <div class="a-shift"><span class="a-shift-dot"></span><div><strong>白班 · 08:00</strong><small>距离交班还有 05:42</small></div></div>
+          <div class="a-user"><span class="avatar">林</span><div><strong>林知夏</strong><small>前台 · 白班</small></div><svg><use href="#i-more"></use></svg></div>
+        </aside>
+
+        <div class="a-main">
+          <header class="a-header">
+            <div><span class="a-kicker">9 月 19 日 星期六</span><h1>值班控制台</h1></div>
+            <div class="a-actions">
+              <label><svg><use href="#i-search"></use></svg><input placeholder="姓名、手机号、订单号、房号" /></label>
+              <button class="a-btn ghost" data-preview="班次结算"><svg><use href="#i-receipt"></use></svg>班次结算</button>
+              <button class="a-btn primary" data-preview="新建预订"><svg><use href="#i-plus"></use></svg>新建预订</button>
+            </div>
+          </header>
+
+          <section class="a-pulse">
+            <div class="a-occupancy"><span>入住率</span><strong>82.5<small>%</small></strong><i><b></b></i><small>33 / 40 间在住</small></div>
+            <div class="a-stat"><span>今日到店</span><strong>7</strong><small>最近 14:20 · 708</small></div>
+            <div class="a-stat"><span>今日离店</span><strong>5</strong><small>2 间已结账</small></div>
+            <div class="a-stat"><span>待查房</span><strong>6</strong><small>3 间影响排房</small></div>
+            <div class="a-stat money"><span>今日入账</span><strong>¥3,684</strong><small>ADR ¥100 · 含税</small></div>
+          </section>
+
+          <div class="a-grid">
+            <div class="a-column">
+              <section class="a-panel rhythm">
+                <div class="a-panel-head"><div><h2>今日节奏</h2><p>交班、清洁、到店和日报的关键节点</p></div><span>现在 11:18</span></div>
+                <div class="a-timeline">
+                  <div class="a-block done"><span>08:00</span><strong>退房 / 清洁</strong><small>5 间离店</small></div>
+                  <div class="a-block active"><span>11:00</span><strong>房态冲刺</strong><small>6 间待查房</small></div>
+                  <div class="a-block"><span>14:00</span><strong>集中到店</strong><small>7 笔预订</small></div>
+                  <div class="a-block"><span>17:00</span><strong>白班交班</strong><small>班次结算</small></div>
+                  <div class="a-block"><span>02:00</span><strong>日报生成</strong><small>夜班处理</small></div>
+                </div>
+              </section>
+
+              <section class="a-panel rooms">
+                <div class="a-panel-head"><div><h2>实时房态矩阵</h2><p>4 个楼层 · 40 间房 · 点击房间进入操作</p></div><div class="a-legend"><span class="occupied">在住</span><span class="reserved">已订</span><span class="available">可售</span><span class="cleaning">待清洁</span><span class="maintenance">停用</span></div></div>
+                <div id="aRoomBoard" class="a-room-board"></div>
+              </section>
+
+              <section class="a-panel arrivals">
+                <div class="a-panel-head"><div><h2>到店与离店</h2><p>按预计时间排列，紧急事项优先显示</p></div><button class="text-link" data-preview="前台工作台">打开前台工作台 <svg><use href="#i-arrow"></use></svg></button></div>
+                <div id="aArrivalTable"></div>
+              </section>
+            </div>
+
+            <aside class="a-side">
+              <section class="a-panel tasks">
+                <div class="a-panel-head"><div><h2>优先任务</h2><p>6 项未完成</p></div><button class="text-link" data-preview="任务列表">全部</button></div>
+                <div id="aTasks"></div>
+              </section>
+              <section class="a-panel cash">
+                <div class="a-panel-head"><div><h2>当前班次</h2><p>08:00 开班 · 现金差额 ¥0</p></div></div>
+                <div class="a-cash-grid"><div><span>现金</span><strong>¥1,260</strong></div><div><span>微信</span><strong>¥1,538</strong></div><div><span>支付宝</span><strong>¥486</strong></div><div><span>银行卡</span><strong>¥400</strong></div></div>
+                <button class="a-btn dark" data-preview="班次结算">开始交班结算</button>
+              </section>
+              <section class="a-panel note"><span class="note-mark">!</span><div><strong>708 已担保但未到店</strong><p>保留至 18:00，夜班需电话确认。</p></div></section>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="variant variant-b" aria-label="方案 B 宾客旅程">
+      <header class="b-topbar">
+        <div class="b-brand"><span class="b-mark">云</span><strong>云栖酒店</strong><small>今日运营</small></div>
+        <nav><a class="active">客房旅程</a><a>预订</a><a>房态</a><a>账务</a><a>报表</a></nav>
+        <div class="b-user"><button data-preview="新建预订"><svg><use href="#i-plus"></use></svg>新建预订</button><span class="avatar">林</span></div>
+      </header>
+      <div class="b-content">
+        <header class="b-headline">
+          <div><p>9 月 19 日 · 周六 · 白班 08:00—17:00</p><h1>把今天每位宾客送到正确房间</h1></div>
+          <div class="b-daystats"><div><span>在住</span><strong>33</strong></div><div><span>到店</span><strong>7</strong></div><div><span>离店</span><strong>5</strong></div><div><span>待清洁</span><strong>6</strong></div></div>
+        </header>
+
+        <section class="b-overview">
+          <div class="b-occupancy-card">
+            <div class="b-ring"><span>82.5%</span><small>入住率</small></div>
+            <div><strong>33 / 40 间房正在使用</strong><p>还有 3 间将在 14:00 前释放，可承接 7 笔到店。</p></div>
+          </div>
+          <div class="b-alert"><svg><use href="#i-bell"></use></svg><div><strong>3 间待查房影响今日排房</strong><span>708、902、1406 需要优先验收</span></div><button data-preview="客房任务">处理</button></div>
+        </section>
+
+        <section class="b-flow" id="bFlow"></section>
+
+        <section class="b-bottom">
+          <div class="b-timeline-card">
+            <div class="b-section-title"><h2>今日时间线</h2><span>下一节点：14:00 集中到店</span></div>
+            <div class="b-line">
+              <div class="done"><b>08:00</b><span>夜班交班</span></div>
+              <div class="done"><b>10:36</b><span>5 间退房完成</span></div>
+              <div class="now"><b>11:18</b><span>当前时间</span></div>
+              <div><b>14:00</b><span>7 笔到店</span></div>
+              <div><b>17:00</b><span>白班交班</span></div>
+              <div><b>02:00</b><span>日报生成</span></div>
+            </div>
+          </div>
+          <div class="b-quick-card">
+            <h2>快捷操作</h2>
+            <button data-preview="查询订单"><svg><use href="#i-search"></use></svg><span><strong>查询订单</strong><small>姓名、房号、手机号</small></span></button>
+            <button data-preview="办理入住"><svg><use href="#i-key"></use></svg><span><strong>办理入住</strong><small>7 笔等待到店</small></span></button>
+            <button data-preview="记录消费"><svg><use href="#i-receipt"></use></svg><span><strong>记录消费</strong><small>早餐、加床、客房消费</small></span></button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="variant variant-c" aria-label="方案 C 客房台账">
+      <div class="c-shell">
+        <header class="c-menubar">
+          <div class="c-brand"><span>云</span><strong>酒店运营台账</strong></div>
+          <nav><a>文件</a><a>业务</a><a>报表</a><a>系统</a></nav>
+          <label><svg><use href="#i-search"></use></svg><input placeholder="全局检索" /></label>
+          <div class="c-user">林知夏 · 前台</div>
+        </header>
+        <div class="c-toolbar">
+          <div class="c-tabs"><button class="active">住店台账</button><button>预订台账</button><button>客房任务</button><button>收款流水</button></div>
+          <div><button class="c-action" data-preview="班次结算">班次结算</button><button class="c-action primary" data-preview="新建订单"><svg><use href="#i-plus"></use></svg>新建订单</button></div>
+        </div>
+        <div class="c-workspace">
+          <aside class="c-filters">
+            <h2>今日工作台</h2>
+            <div class="c-filter active"><span>全部在住</span><b>33</b></div>
+            <div class="c-filter"><span>今日到店</span><b>7</b></div>
+            <div class="c-filter"><span>今日离店</span><b>5</b></div>
+            <div class="c-filter"><span>未结账</span><b>4</b></div>
+            <div class="c-filter warn"><span>差异 / 异常</span><b>2</b></div>
+            <h3>楼层</h3>
+            <label><input type="checkbox" checked /> 7F <span>10</span></label>
+            <label><input type="checkbox" checked /> 8F <span>10</span></label>
+            <label><input type="checkbox" checked /> 9F <span>10</span></label>
+            <label><input type="checkbox" checked /> 14F <span>10</span></label>
+            <h3>房态</h3>
+            <label><input type="checkbox" checked /> 在住 <span>33</span></label>
+            <label><input type="checkbox" checked /> 已预订 <span>4</span></label>
+            <label><input type="checkbox" checked /> 待清洁 <span>6</span></label>
+          </aside>
+
+          <main class="c-ledger">
+            <div class="c-ledger-head"><div><h1>住店台账</h1><p>40 间房 · 最后刷新 11:18:42</p></div><div class="c-chips"><span>全部房型</span><span>全部渠道</span><span>按房号</span></div></div>
+            <div class="c-table-head"><span>房号</span><span>状态</span><span>宾客</span><span>入住 / 离店</span><span>房账</span><span>今日动作</span></div>
+            <div id="cLedgerRows" class="c-ledger-rows"></div>
+            <div class="c-roomstrip">
+              <div class="c-section-title"><h2>房态密度</h2><span>点击房间查看右侧详情</span></div>
+              <div id="cRoomBoard" class="c-room-board"></div>
+            </div>
+          </main>
+
+          <aside class="c-inspector">
+            <div class="c-inspector-head"><span>当前选择</span><h2>708 · 高级大床房</h2><p>7 楼 · 已担保预订 · 电话渠道</p></div>
+            <div class="c-person"><span class="avatar">徐</span><div><strong>徐文清</strong><small>138 **** 2218 · 身份证 **** 4821</small></div><button>更换</button></div>
+            <dl class="c-details"><div><dt>入住</dt><dd>09-19 14:00</dd></div><div><dt>离店</dt><dd>09-20 12:00</dd></div><div><dt>房价</dt><dd>¥100 / 晚</dd></div><div><dt>担保</dt><dd>已担保 ¥100</dd></div></dl>
+            <div class="c-folio"><div class="c-section-title"><h3>房账预览</h3><button>查看明细</button></div><p><span>房费</span><b>¥100.00</b></p><p><span>押金</span><b>¥100.00</b></p><p><span>消费</span><b>¥0.00</b></p><p class="total"><span>当前余额</span><b>¥0.00</b></p></div>
+            <div class="c-log"><div class="c-section-title"><h3>操作记录</h3><button>全部</button></div><p><b>10:42</b><span>林知夏创建预订</span></p><p><b>10:43</b><span>经理授权房价 ¥100</span></p><p><b>10:45</b><span>房间 708 已锁定</span></p></div>
+            <div class="c-inspector-actions"><button data-preview="修改预订">修改预订</button><button class="primary" data-preview="办理入住">办理入住</button></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="variant-switcher" aria-label="原型方案切换">
+    <button id="prevVariant" aria-label="上一个方案">←</button>
+    <div><span>原型方案</span><strong id="variantLabel">A · 值班控制台</strong></div>
+    <button id="nextVariant" aria-label="下一个方案">→</button>
+  </div>
+
+  <div class="preview-overlay" id="previewOverlay" hidden>
+    <div class="preview-modal" role="dialog" aria-modal="true" aria-labelledby="previewTitle">
+      <div class="preview-modal-head"><div><span>原型交互占位</span><h2 id="previewTitle">新建预订</h2></div><button id="closePreview" aria-label="关闭">×</button></div>
+      <div class="preview-form">
+        <label><span>宾客姓名</span><input value="徐文清" /></label>
+        <label><span>手机号码</span><input value="138 5678 2218" /></label>
+        <label><span>入住日期</span><input value="2026-09-19" /></label>
+        <label><span>离店日期</span><input value="2026-09-20" /></label>
+        <label class="wide"><span>房间</span><select><option>708 · 高级大床房 · ¥100</option></select></label>
+        <label><span>预订来源</span><select><option>电话</option><option>微信</option><option>到店</option></select></label>
+        <label><span>担保状态</span><select><option>已担保</option><option>未担保</option></select></label>
+        <div class="preview-summary"><span>预计房费</span><strong>¥100</strong></div>
+      </div>
+      <div class="preview-modal-foot"><button id="cancelPreview">取消</button><button class="primary" id="confirmPreview">确认原型操作</button></div>
+    </div>
+  </div>
+
+  <script src="prototype.js" defer></script>
+</body>
+</html>
