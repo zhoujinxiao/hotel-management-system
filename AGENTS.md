@@ -1,4 +1,4 @@
-﻿# AGENTS.md
+# AGENTS.md
 
 本文件定义酒店运营系统项目中所有开发代理必须遵守的规则。开始任何任务前，必须先阅读本文件，再阅读相关文档和现有代码。
 
@@ -95,8 +95,8 @@
 正式开发开始时，目标是以下技术方案：
 
 - 前端：Vue 3 + TypeScript + Vite。
-- 后端：Java + Spring Boot + Spring Security。
-- 数据访问：MyBatis-Plus 或 Spring Data JPA，最终选择尚未确定。
+- 后端：Java 21 + Spring Boot 4.1 + Spring Security。
+- 数据访问：Spring Data JPA。
 - 数据库：MySQL 8。
 - 部署：本地独立服务器 + UPS，局域网浏览器访问。
 - 备份：MySQL 备份，加密写入外置硬盘和云对象存储。
@@ -104,7 +104,7 @@
 - 浏览器：当前版本 Chrome 和 Edge。
 - 服务端必须执行权限校验，前端隐藏按钮不构成安全措施。
 
-在技术选择尚未写入 PRD 时，不要自行锁定 Java 版本、ORM、云厂商、目录结构或认证实现。先更新 PRD 或向用户确认。
+Java 21、Spring Boot 4.1、Spring Data JPA 和模块化单体结构已经写入技术设计。不要在未更新 PRD 或技术设计的情况下更换 ORM、认证方式或部署架构。
 
 ## 6. 数据与安全规则
 

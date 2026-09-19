@@ -1,4 +1,4 @@
-﻿# 云栖酒店运营管理系统 PRD
+# 云栖酒店运营管理系统 PRD
 
 | 项目 | 内容 |
 | --- | --- |
@@ -372,8 +372,8 @@
 | 层级 | 技术 |
 | --- | --- |
 | 前端 | Vue 3 + TypeScript + Vite |
-| 后端 | Java + Spring Boot + Spring Security |
-| 数据访问 | MyBatis-Plus 或 Spring Data JPA，待最终选择 |
+| 后端 | Java 21 + Spring Boot 4.1 + Spring Security |
+| 数据访问 | Spring Data JPA |
 | 数据库 | MySQL 8 |
 | 部署 | 独立迷你服务器 + UPS，局域网浏览器访问 |
 | 备份 | MySQL 本地备份 + 加密外置硬盘 + 云对象存储 |
@@ -529,7 +529,7 @@ Spring Boot 应用
 | OQ-006 | 当前有效预订清单 | 前台 | 阶段 1 前 |
 | OQ-007 | 两个完整班次的真实结算样例 | 前台/财务 | 阶段 0 |
 | OQ-008 | 10 笔匿名化账务样例 | 财务/经理 | 阶段 1 |
-| OQ-009 | MyBatis-Plus 与 Spring Data JPA 的最终选择 | 开发 | 阶段 1 |
+| OQ-009 | 已解决：采用 Spring Data JPA | 开发 | 已完成 |
 | OQ-010 | 云备份服务商、地域和每月费用 | 老板/开发 | 阶段 1 |
 | OQ-011 | 账务和宾客数据的法定留存期限 | 老板/财务 | 开发前 |
 | OQ-012 | 服务器故障时的人工应急流程 | 老板/前台 | 阶段 1 |
@@ -554,7 +554,7 @@ Spring Boot 应用
 | 自动收费 | 第一版不做，未到店费用人工审批 | 已确认 |
 | 部署 | 独立本地服务器 + UPS + 局域网浏览器 | 已确认 |
 | 备份 | 外置硬盘 + 加密云端 | 已确认 |
-| 技术栈 | Vue 3 + TypeScript + Spring Boot + MySQL | 已确认 |
+| 技术栈 | Vue 3 + TypeScript + Java 21 + Spring Boot 4.1 + MySQL | 已确认 |
 | 开发方式 | 单人开发，每周约 20 小时 | 已确认 |
 
 ## 17. 审批

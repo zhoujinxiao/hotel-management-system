@@ -1,0 +1,27 @@
+﻿services:
+  mysql:
+    image: mysql:8.4
+    container_name: hotel-management-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: hotel_management
+      MYSQL_USER: hotel
+      MYSQL_PASSWORD: hotel_dev_password
+      MYSQL_ROOT_PASSWORD: root_dev_password
+      TZ: Asia/Shanghai
+    ports:
+      - "3306:3306"
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_0900_ai_ci
+      - --default-time-zone=+08:00
+    volumes:
+      - hotel_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot_dev_password"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  hotel_mysql_data:

@@ -1,84 +1,76 @@
 ﻿# 云栖酒店运营系统
 
-面向酒店前台、值班经理和客房部的桌面端运营管理 MVP。当前版本覆盖酒店日常运营最关键的业务闭环：
+单体酒店内部使用的桌面 Web 运营系统。当前仓库包含需求文档、UI 原型、前端工程和后端工程。
 
-`预订 → 排房 → 入住 → 在住账务 → 退房 → 客房清洁`
-
-## 立即运行
-
-无需安装依赖，本机需要有 Node.js 18 或更高版本：
-
-```powershell
-node server.mjs
-```
-
-浏览器打开：
-
-```text
-http://127.0.0.1:4173
-```
-
-也可以使用：
-
-```powershell
-npm start
-```
-
-开发时自动重启：
-
-```powershell
-npm run dev
-```
-
-## 已实现模块
-
-- **运营工作台**：入住率、到店、离店、在住宾客、今日入账、运营时间轴和优先任务。
-- **预订管理**：预订列表、搜索、状态筛选、新建预订、定金登记和预订详情。
-- **房态中心**：按楼层查看 24 间房，支持可售、在住、已预订、待清洁、维修中状态切换。
-- **入住 / 退房**：办理入住后房间转为在住；退房后自动生成客房清洁任务。
-- **宾客档案**：联系方式、会员等级、住店次数、偏好和历史记录。
-- **账单与收款**：近七日实收、待结房账、预授权和收款流水。
-- **本地持久化**：所有变化写入 `data/hotel.json`，无需数据库即可演示。
-
-## 目录结构
+## 当前结构
 
 ```text
 .
-├─ public/
-│  ├─ index.html       # 页面结构与 SVG 图标
-│  ├─ styles.css       # 桌面端设计系统与页面样式
-│  └─ app.js           # 页面渲染、路由、表单和业务交互
-├─ data/
-│  └─ hotel.json       # 首次运行自动生成的可写演示数据
-├─ server.mjs          # 静态服务器、REST API 和 JSON 持久化
-└─ package.json
+├─ backend/                  # Java 21 + Spring Boot 4.1 + Spring Data JPA
+├─ frontend/                 # Vue 3 + TypeScript + Vite
+├─ docs/                     # PRD、技术设计
+├─ prototype/                # 已确认的 UI 原型
+├─ infra/                    # 本地 MySQL Compose 配置
+├─ public/                   # 早期演示 MVP，不作为生产实现
+└─ server.mjs                # 早期演示服务器
 ```
 
-## API
+## 开发环境
 
-| 方法 | 地址 | 作用 |
-| --- | --- | --- |
-| `GET` | `/api/state` | 获取完整业务数据和汇总指标 |
-| `POST` | `/api/bookings` | 创建预订 |
-| `POST` | `/api/bookings/:id/checkin` | 办理入住 |
-| `POST` | `/api/bookings/:id/checkout` | 办理退房并生成清洁任务 |
-| `PATCH` | `/api/rooms/:id/status` | 调整房态 |
-| `POST` | `/api/tasks/:id/complete` | 完成任务并同步房态 |
+- Java 21
+- Node.js 24+
+- MySQL 8
+- Docker 可选，用于启动本地 MySQL
 
-## 当前边界
+环境变量示例见 `.env.example`。
 
-这是用于需求确认和流程验证的 MVP，不应直接作为生产系统使用：
+## 前端
 
-- 没有登录、角色权限、审计日志和数据脱敏。
-- 没有真正的支付、发票、身份证读卡、门锁、OTA 渠道和公安上传接口。
-- JSON 文件适合单机演示，不适合多实例并发和复杂报表。
-- 房价、房量、订单和账务规则仍是简化模型。
+```powershell
+cd frontend
+npm install
+npm run dev
+```
 
-## 建议的下一阶段
+生产构建：
 
-1. 确认业务范围：单体酒店、连锁集团或民宿；前台、客房、餐饮、会员是否分模块。
-2. 明确权限模型：前台、值班经理、客房主管、财务、系统管理员。
-3. 将后端迁移到 PostgreSQL，并增加库存冲突校验、订单号规则、审计日志和事务。
-4. 接入真实接口：身份证读卡器、门锁、微信/支付宝、发票、OTA、公安旅业系统。
-5. 根据团队技术栈迁移前端。若继续当前路线，建议使用 Vue 3 + TypeScript；后端可使用 NestJS 或 Spring Boot。
-6. 上线前补充备份恢复、监控、日志、权限测试和隐私合规。
+```powershell
+npm run build
+```
+
+## 后端
+
+```powershell
+cd backend
+.\mvnw.cmd spring-boot:run
+```
+
+首次运行前需要准备 MySQL，并配置：
+
+```text
+DB_URL
+DB_USERNAME
+DB_PASSWORD
+```
+
+如果本机有 Docker：
+
+```powershell
+docker compose -f infra/compose.yaml up -d
+```
+
+## 当前开发状态
+
+- 已建立 PRD、技术设计和前端信息架构。
+- 已创建 Vue 3 前端工程并实现值班控制台首屏。
+- 已创建 Spring Boot 后端工程。
+- 已建立第一版 Flyway 数据库迁移。
+- 数据库实跑、业务 API 和完整权限系统尚未完成。
+- 现有 `public/` 和 `server.mjs` 是早期演示，不继续扩展为生产架构。
+
+## 文档
+
+- `docs/PRD.md`
+- `docs/TECH-DESIGN.md`
+- `prototype/README.md`
+- `AGENTS.md`
